@@ -88,10 +88,10 @@ GitHub Actions will automatically build and publish the updated site within ~1 m
 
 ## Publishing to GitHub Pages & Connecting `www.zjwang.ca`
 
-1. Push this repository to GitHub (`https://github.com/joezjwang/zjwang-site`).
+1. Push this repository to GitHub (`https://github.com/joezjwang/static-site`).
 2. In GitHub, open **Settings → Pages** and set **Source** to **GitHub Actions**.
 3. Wait for the **Deploy Hugo site to GitHub Pages** workflow to finish, then preview at:
-   `https://joezjwang.github.io/zjwang-site/`
+   `https://joezjwang.github.io/static-site/`
 4. When ready to switch over `www.zjwang.ca`:
    - In GitHub **Settings → Pages → Custom domain**, enter `www.zjwang.ca` and click **Save**.
    - At your domain registrar's DNS settings:

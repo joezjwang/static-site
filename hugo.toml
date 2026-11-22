@@ -1,4 +1,4 @@
-baseURL = "https://joezjwang.github.io/zjwang-site/"
+baseURL = "https://joezjwang.github.io/static-site/"
 locale = "en-us"
 title = "Joe Wang Photography"
 disableKinds = ["taxonomy", "term"]
