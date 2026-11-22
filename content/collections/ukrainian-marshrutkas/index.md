@@ -5,7 +5,7 @@ display_date: "11. 2015"
 weight: 40
 featured: true
 cover: "10-ukrainan-marshrutkas-3849.jpg"
-description: "In Lviv, I spent two days photographing these marshrutkas. Like in Central Asia these marshrutkas provide an insight to the everyday life of the locals."
+description: "In Lviv, I spent two days photographing these marshrutkas. Like in Central Asia, these marshrutkas provide an insight into the everyday life of the locals."
 photos:
   - file: "01-ukrainan-marshrutkas-.jpg"
     title: "Marshrutka 25"

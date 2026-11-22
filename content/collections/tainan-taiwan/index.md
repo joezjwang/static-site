@@ -5,7 +5,7 @@ display_date: "12. 2014"
 weight: 70
 featured: false
 cover: "08-tainan-taiwan-4256.jpg"
-description: "Tainan, the old capital of Taiwan. It has a village like feel not found in big cities like Taipei and Kaohsiung. With cheap rent the city is a hot bed for young artists."
+description: "Tainan, the old capital of Taiwan. It has a village-like feel not found in big cities like Taipei and Kaohsiung. With cheap rent, the city is a hotbed for young artists."
 photos:
   - file: "01-tainan-taiwan-3736.jpg"
     title: "Anping Tree House"

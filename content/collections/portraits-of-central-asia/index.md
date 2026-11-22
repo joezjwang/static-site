@@ -5,7 +5,7 @@ display_date: "08. 2015"
 weight: 10
 featured: true
 cover: "11-central-asian-portraits-0024.jpg"
-description: "I spend 5 month traveling in Central Asia . What really attracted me to this place was the diversity of the people and how little is known of them. These are a selection of portraits I took in Xinjiang, Kyrgyzstan, Kazakhstan and Uzbekistan"
+description: "I spent 5 months traveling in Central Asia. What really attracted me to this place was the diversity of the people and how little is known of them. This is a selection of portraits I took in Xinjiang, Kyrgyzstan, Kazakhstan, and Uzbekistan."
 photos:
   - file: "01-xinjiang-portraits-8080.jpg"
     title: "Kashgar Girl"
@@ -18,7 +18,7 @@ photos:
   - file: "05-xinjiang-portraits-8095.jpg"
     title: "A Lady from Kashgar"
   - file: "06-xinjiang-portraits-8927.jpg"
-    title: "Yarkant Oldman"
+    title: "Yarkant Old Man"
   - file: "07-xinjiang-portraits-9042.jpg"
     title: "Yarkant Girl"
   - file: "08-xinjiang-portraits-8478.jpg"

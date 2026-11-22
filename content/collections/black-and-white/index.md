@@ -5,7 +5,7 @@ display_date: "05. 2022"
 weight: 20
 featured: true
 cover: "05-bnw-005057440007.jpg"
-description: "A selection black and white analog works"
+description: "A selection of black and white analog works."
 photos:
   - file: "01-bnw-005057450011.jpg"
     title: "Tulip Tree"
@@ -22,7 +22,7 @@ photos:
   - file: "07-bnw-005072690023.jpg"
     title: "Nesting Ground"
   - file: "08-bnw-005057470007.jpg"
-    title: "Under Growth"
+    title: "Undergrowth"
   - file: "09-black-and-white-005098380029.jpg"
     title: "Maple Hydrangea"
   - file: "10-black-and-white-005099000001.jpg"

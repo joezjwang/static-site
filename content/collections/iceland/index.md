@@ -5,7 +5,7 @@ display_date: "09. 2012"
 weight: 60
 featured: false
 cover: "05-geothermal-myvatn.jpg"
-description: "11 Days and 2500 kilometers I have yet to come across another place with landscapes as diverse and dramatic as Iceland."
+description: "11 days and 2,500 kilometers. I have yet to come across another place with landscapes as diverse and dramatic as Iceland."
 photos:
   - file: "01-colours-of-fall.jpg"
     title: "Colours of Fall"
@@ -22,7 +22,7 @@ photos:
   - file: "07-vatnaj-C3-B6kull-glacier.jpg"
     title: "Storm over Vatnajokull"
   - file: "08-glacier-walk.jpg"
-    title: "Walking on Glacier"
+    title: "Walking on a Glacier"
   - file: "09-svartifoss.jpg"
     title: "Svartifoss"
   - file: "10-skogafoss.jpg"

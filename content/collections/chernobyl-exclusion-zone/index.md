@@ -10,7 +10,7 @@ photos:
   - file: "01-chernobyl-3275.jpg"
     title: "Chernobyl Autumn"
   - file: "02-chernobyl-3399.jpg"
-    title: "Pripyat Apartements"
+    title: "Pripyat Apartments"
   - file: "03-chernobyl-3453.jpg"
     title: "Chernobyl Ferris Wheel"
   - file: "04-chernobyl-3436.jpg"
@@ -38,5 +38,5 @@ photos:
   - file: "15-chernobyl-3478.jpg"
     title: "Pripyat Basketball Gym"
   - file: "16-chernobyl-3540.jpg"
-    title: "Pripyat School Gymnastic"
+    title: "Pripyat School Gymnastics"
 ---

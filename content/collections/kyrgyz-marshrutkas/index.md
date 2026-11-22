@@ -5,7 +5,7 @@ display_date: "10. 2015"
 weight: 30
 featured: true
 cover: "03-marshrutkas-2529.jpg"
-description: "I'm always tempted to take photos of people riding on Marshrutkas. It is in these moments that one finds the most genuine expressions. The adults pondering about life and children fascinated by the world outside. Location: Osh Kyrgyzstan"
+description: "I'm always tempted to take photos of people riding on marshrutkas. It is in these moments that one finds the most genuine expressions: adults pondering life and children fascinated by the world outside. Location: Osh, Kyrgyzstan."
 photos:
   - file: "01-marshrutkas-2627.jpg"
     title: "Marshrutka 122"
