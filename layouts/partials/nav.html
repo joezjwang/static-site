@@ -7,11 +7,9 @@
 
 <header id="nav-section">
   <div class="logo">
-    <h1>
-      <a href="{{ "" | relURL }}" title="{{ .Site.Title }}">
-        <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}">
-      </a>
-    </h1>
+    <a href="{{ "" | relURL }}" title="{{ .Site.Title }}">
+      <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}">
+    </a>
   </div>
 
   <nav id="menu-section" aria-label="Main navigation">
@@ -54,9 +52,9 @@
   </nav>
 
   {{- if $isCollections }}
-  <div class="keyboard-instructions" id="lights-hint">
+  <button type="button" class="keyboard-instructions" id="lights-hint" aria-pressed="false">
     Press "L" to turn OFF lights
-  </div>
+  </button>
   {{- end }}
 
   <div class="copyright">

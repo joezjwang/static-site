@@ -55,9 +55,22 @@
       onScroll();
     }
 
-    /* 3. "L" key lights-off mode on collection pages */
+    /* 3. "L" key & clickable button lights-off mode on collection pages */
     var lightsHint = document.getElementById('lights-hint');
     if (lightsHint) {
+      var toggleLights = function () {
+        if (hasClass(document.body, 'lights-off')) {
+          removeClass(document.body, 'lights-off');
+          lightsHint.innerHTML = 'Press "L" to turn OFF lights';
+          lightsHint.setAttribute('aria-pressed', 'false');
+        } else {
+          addClass(document.body, 'lights-off');
+          lightsHint.innerHTML = 'Press "L" to turn ON lights';
+          lightsHint.setAttribute('aria-pressed', 'true');
+        }
+      };
+      lightsHint.onclick = toggleLights;
+
       var onKeyDown = function (e) {
         e = e || window.event;
         if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -68,13 +81,7 @@
         }
         var code = e.which || e.keyCode;
         if (code === 76) { /* L */
-          if (hasClass(document.body, 'lights-off')) {
-            removeClass(document.body, 'lights-off');
-            lightsHint.innerHTML = 'Press "L" to turn OFF lights';
-          } else {
-            addClass(document.body, 'lights-off');
-            lightsHint.innerHTML = 'Press "L" to turn ON lights';
-          }
+          toggleLights();
           if (e.preventDefault) {
             e.preventDefault();
           } else {

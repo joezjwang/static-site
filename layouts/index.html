@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{- $collections := (where .Site.RegularPages "Section" "collections").ByWeight -}}
+<h1 class="sr-only">{{ .Site.Title }} — Galleries</h1>
 <div class="assets-container gallery-assets-container">
   {{- range $collections }}
     {{- partial "gallery-card.html" . -}}

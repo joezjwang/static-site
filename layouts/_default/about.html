@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div id="about-me">
-  <h2>{{ .Title }}</h2>
+  <h1>{{ .Title }}</h1>
   {{ .Content }}
   {{- with .Resources.GetMatch "about.jpg" }}
   <div class="photograph about-photo">

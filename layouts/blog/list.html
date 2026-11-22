@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{- $posts := .RegularPages.ByDate.Reverse -}}
+<h1 class="sr-only">{{ .Title }}</h1>
 <div class="assets-container blog-assets-container">
   {{- range $idx, $post := $posts }}
     {{- if eq $idx 0 }}

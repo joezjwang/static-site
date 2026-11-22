@@ -1,0 +1,10 @@
+{{ define "main" }}
+<div class="not-found-container">
+  <h1>Page Not Found</h1>
+  <p>The page you are looking for may have moved or no longer exists.</p>
+  <p class="not-found-links">
+    <a href="{{ "" | relURL }}" class="share-button">View Galleries</a>
+    <a href="{{ "blog/" | relURL }}" class="share-button">Read the Blog</a>
+  </p>
+</div>
+{{ end }}

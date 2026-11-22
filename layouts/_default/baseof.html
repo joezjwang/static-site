@@ -4,9 +4,10 @@
   {{- partial "head.html" . -}}
 </head>
 <body class="{{ if or .IsHome (eq .Section "collections") }}section-collections{{ else if eq .Section "blog" }}section-blog{{ else }}section-page{{ end }}">
+  <a class="skip-link" href="#page-content">Skip to content</a>
   <span id="page-top"></span>
   {{- partial "nav.html" . -}}
-  <main id="page-content">
+  <main id="page-content" tabindex="-1">
     {{- block "main" . -}}{{- end -}}
   </main>
   <div id="lightbox" aria-hidden="true"></div>
