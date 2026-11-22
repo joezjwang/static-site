@@ -1,16 +1,15 @@
 baseURL = "https://www.zjwang.ca/"
 locale = "en-us"
-title = "Joe Wang Photography"
+title = "ZJ Wang Photography"
 disableKinds = ["taxonomy", "term"]
 enableRobotsTXT = true
 
 [params]
-  description = "Joe Wang Photography. Galleries and stories on photography and travel. Based in Toronto."
-  author = "Joe Wang"
+  description = "ZJ Wang Photography. Galleries and stories on photography and travel. Based in Toronto."
+  author = "ZJ Wang"
   copyrightStartYear = 2014
   instagramHandle = "joewangphoto"
   instagramUrl = "https://www.instagram.com/joewangphoto/"
-  logo = "images/joe-wang-photography-logo.png"
 
 [markup]
   [markup.goldmark]

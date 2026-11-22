@@ -1,4 +1,4 @@
-# Joe Wang Photography (`www.zjwang.ca`)
+# ZJ Wang Photography (`www.zjwang.ca`)
 
 Static photography portfolio and travel blog built with [Hugo Extended](https://gohugo.io/) and deployed automatically to GitHub Pages.
 
