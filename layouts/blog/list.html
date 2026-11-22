@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{- $posts := .RegularPages.ByDate.Reverse -}}
+<div class="assets-container blog-assets-container">
+  {{- range $idx, $post := $posts }}
+    {{- if eq $idx 0 }}
+      {{- partial "post-card.html" (dict "page" $post "large" true) -}}
+    {{- else }}
+      {{- partial "post-card.html" (dict "page" $post "large" false) -}}
+    {{- end }}
+  {{- end }}
+</div>
+{{ end }}

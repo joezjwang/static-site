@@ -1,0 +1,62 @@
+{{- /*
+  Responsive image partial with WebP + JPEG fallback for legacy browsers.
+  Legacy browsers that do not support <picture>, WebP, srcset, or loading="lazy"
+  fall back cleanly to the plain <img src="..."> JPEG.
+
+  Params:
+    img          - Hugo image Resource (required)
+    alt          - Alt text string
+    sizes        - HTML sizes attribute (default "100vw")
+    widths       - Slice of target widths (default 480, 800, 1200, 1600)
+    fallbackWidth - Width of the default JPEG <img src> (default 1080)
+    class        - Optional CSS class on <img>
+    eager        - If true, omit loading="lazy" (use for above-the-fold hero)
+*/ -}}
+{{- $img := .img -}}
+{{- $alt := .alt | default "" -}}
+{{- $sizes := .sizes | default "100vw" -}}
+{{- $widths := .widths | default (slice 480 800 1200 1600) -}}
+{{- $fallbackWidth := .fallbackWidth | default 1080 -}}
+{{- $class := .class | default "" -}}
+{{- $eager := .eager | default false -}}
+
+{{- $origW := $img.Width -}}
+{{- $webpSet := slice -}}
+{{- $jpgSet := slice -}}
+
+{{- range $w := $widths -}}
+  {{- if le $w $origW -}}
+    {{- $wImg := $img.Resize (printf "%dx webp q80" $w) -}}
+    {{- $jImg := $img.Resize (printf "%dx jpg q82" $w) -}}
+    {{- $webpSet = $webpSet | append (printf "%s %dw" $wImg.RelPermalink $wImg.Width) -}}
+    {{- $jpgSet = $jpgSet | append (printf "%s %dw" $jImg.RelPermalink $jImg.Width) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Always include original width if smaller than smallest target or not yet included */ -}}
+{{- if eq (len $jpgSet) 0 -}}
+  {{- $wOrig := $img.Resize (printf "%dx webp q80" $origW) -}}
+  {{- $jOrig := $img.Resize (printf "%dx jpg q82" $origW) -}}
+  {{- $webpSet = $webpSet | append (printf "%s %dw" $wOrig.RelPermalink $wOrig.Width) -}}
+  {{- $jpgSet = $jpgSet | append (printf "%s %dw" $jOrig.RelPermalink $jOrig.Width) -}}
+{{- end -}}
+
+{{- $fbW := $fallbackWidth -}}
+{{- if gt $fbW $origW -}}
+  {{- $fbW = $origW -}}
+{{- end -}}
+{{- $fallback := $img.Resize (printf "%dx jpg q82" $fbW) -}}
+
+<picture>
+  <source type="image/webp" srcset="{{ delimit $webpSet ", " }}" sizes="{{ $sizes }}">
+  <img
+    src="{{ $fallback.RelPermalink }}"
+    srcset="{{ delimit $jpgSet ", " }}"
+    sizes="{{ $sizes }}"
+    width="{{ $fallback.Width }}"
+    height="{{ $fallback.Height }}"
+    alt="{{ $alt }}"
+    {{- if $class }} class="{{ $class }}"{{ end -}}
+    {{- if not $eager }} loading="lazy"{{ end }}
+    decoding="async">
+</picture>

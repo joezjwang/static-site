@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="contact-container">
+  <div class="contact-actions">
+    <a href="#" id="email-joe-link" class="share-button" data-u="joezjwang" data-d="gmail.com">
+      Click to E-mail Joe &#x27A6;
+    </a>
+    <noscript>
+      <p class="contact-noscript">Email: joezjwang [at] gmail [dot] com</p>
+    </noscript>
+
+    <div class="contact-spacer"></div>
+
+    <a href="{{ .Site.Params.instagramUrl }}" class="share-button" target="_blank" rel="noopener noreferrer">
+      Instagram: @{{ .Site.Params.instagramHandle }} &#x27A6;
+    </a>
+  </div>
+</div>
+{{ end }}

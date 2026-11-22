@@ -1,0 +1,51 @@
+{{ define "main" }}
+{{- if .Params.description }}
+<div class="gallery-description">
+  <p>{{ .Params.description }}</p>
+</div>
+{{- end }}
+
+<div class="photograph-group">
+  {{- if .Params.photos -}}
+    {{- range $idx, $item := .Params.photos -}}
+      {{- with $.Resources.GetMatch $item.file -}}
+      <div class="photograph" id="photo-{{ $idx }}">
+        {{- partial "responsive-img.html" (dict
+          "img" .
+          "alt" ($item.title | default $.Title)
+          "sizes" "(max-width: 800px) 100vw, (max-width: 1400px) calc(100vw - 260px), 1080px"
+          "widths" (slice 480 800 1200 1600)
+          "fallbackWidth" 1080
+          "eager" (eq $idx 0)
+        ) -}}
+      </div>
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- /* Automatic mode: just drop photos into a new collection folder */ -}}
+    {{- range $idx, $img := .Resources.ByType "image" -}}
+      <div class="photograph" id="photo-{{ $idx }}">
+        {{- partial "responsive-img.html" (dict
+          "img" $img
+          "alt" $.Title
+          "sizes" "(max-width: 800px) 100vw, (max-width: 1400px) calc(100vw - 260px), 1080px"
+          "widths" (slice 480 800 1200 1600)
+          "fallbackWidth" 1080
+          "eager" (eq $idx 0)
+        ) -}}
+      </div>
+    {{- end -}}
+  {{- end -}}
+
+  <div class="more-galleries-content">
+    <p>More Galleries Below</p>
+  </div>
+</div>
+
+{{- $others := where (where .Site.RegularPages "Section" "collections") "RelPermalink" "ne" .RelPermalink -}}
+<div class="assets-container gallery-assets-container">
+  {{- range $others.ByWeight }}
+    {{- partial "gallery-card.html" . -}}
+  {{- end }}
+</div>
+{{ end }}

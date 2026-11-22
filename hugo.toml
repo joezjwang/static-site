@@ -1,0 +1,40 @@
+baseURL = "https://joezjwang.github.io/zjwang-site/"
+locale = "en-us"
+title = "Joe Wang Photography"
+disableKinds = ["taxonomy", "term"]
+enableRobotsTXT = true
+
+[params]
+  description = "Joe Wang Photography. Galleries and stories on photography and travel. Based in Toronto."
+  author = "Joe Wang"
+  copyrightStartYear = 2014
+  instagramHandle = "joewangphoto"
+  instagramUrl = "https://www.instagram.com/joewangphoto/"
+  logo = "images/joe-wang-photography-logo.png"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+    [markup.goldmark.extensions]
+      footnote = true
+      strikethrough = true
+      linkify = true
+      typographer = true
+
+[imaging]
+  resampleFilter = "Lanczos"
+  bgColor = "#ffffff"
+  [imaging.jpeg]
+    quality = 82
+  [imaging.webp]
+    quality = 80
+
+[permalinks]
+  collections = "/collections/:slug/"
+  blog = "/blog/:slug/"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  page = ["HTML"]

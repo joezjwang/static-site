@@ -1,0 +1,65 @@
+{{- $page := .page -}}
+{{- $large := .large | default false -}}
+{{- $cover := false -}}
+{{- if $page.Params.cover -}}
+  {{- $cover = $page.Resources.GetMatch $page.Params.cover -}}
+{{- end -}}
+{{- if not $cover -}}
+  {{- with ($page.Resources.ByType "image") -}}
+    {{- $cover = index . 0 -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $readMin := $page.ReadingTime -}}
+{{- if lt $readMin 1 -}}
+  {{- $readMin = 1 -}}
+{{- end -}}
+
+{{- if $large -}}
+<section class="post-large-asset">
+  <a href="{{ $page.RelPermalink }}" class="asset-link">
+    <header class="post-large-asset-header">
+      <h2 class="post-large-asset-title">{{ $page.Title }}</h2>
+      <div class="asset-meta-row post-meta-row">
+        <span class="asset-meta">{{ $page.Date.Format "Jan 02, 2006" }}</span>
+        <span class="asset-meta">{{ $readMin }} min read</span>
+      </div>
+    </header>
+    <div class="post-large-asset-image">
+      {{- if $cover -}}
+        {{- partial "responsive-img.html" (dict
+          "img" $cover
+          "alt" $page.Title
+          "sizes" "(max-width: 479px) 92vw, (max-width: 1023px) 450px, 720px"
+          "widths" (slice 480 720 1080)
+          "fallbackWidth" 720
+          "eager" true
+        ) -}}
+      {{- end -}}
+    </div>
+  </a>
+</section>
+{{- else -}}
+<section class="asset post-small-asset">
+  <a href="{{ $page.RelPermalink }}" class="asset-link">
+    <header class="asset-header post-small-asset-header">
+      <h2 class="asset-title post-small-asset-title{{ if gt (len $page.Title) 40 }} is-long-title{{ end }}">{{ $page.Title }}</h2>
+      <div class="asset-meta-row post-meta-row">
+        <span class="asset-meta">{{ $page.Date.Format "Jan 02, 2006" }}</span>
+        <span class="asset-meta">{{ $readMin }} min read</span>
+      </div>
+    </header>
+    <div class="asset-image post-small-asset-image">
+      {{- if $cover -}}
+        {{- partial "responsive-img.html" (dict
+          "img" $cover
+          "alt" $page.Title
+          "sizes" "(max-width: 479px) 92vw, (max-width: 1023px) 450px, 336px"
+          "widths" (slice 360 540 720)
+          "fallbackWidth" 540
+        ) -}}
+      {{- end -}}
+    </div>
+  </a>
+</section>
+{{- end -}}

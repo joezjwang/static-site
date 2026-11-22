@@ -1,0 +1,65 @@
+{{- $isBlog := eq .Section "blog" -}}
+{{- $isCollections := or .IsHome (eq .Section "collections") -}}
+{{- $isAbout := eq .Params.layout "about" -}}
+{{- $isContact := eq .Params.layout "contact" -}}
+{{- $featuredCollections := where (where .Site.RegularPages "Section" "collections") "Params.featured" true -}}
+{{- $featuredCollections = $featuredCollections.ByWeight -}}
+
+<header id="nav-section">
+  <div class="logo">
+    <h1>
+      <a href="{{ "" | relURL }}" title="{{ .Site.Title }}">
+        <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}">
+      </a>
+    </h1>
+  </div>
+
+  <nav id="menu-section" aria-label="Main navigation">
+    <div class="toggle">
+      <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="menu">
+        MENU&nbsp;&nbsp;&#9776;
+      </button>
+    </div>
+
+    <ul id="menu" class="group">
+      <li class="extraspace capital-on-mobile">
+        {{- if $isBlog }}<span class="directory-arrows" aria-hidden="true">&#10095;</span>{{ end -}}
+        <a href="{{ "blog/" | relURL }}"{{ if $isBlog }} class="current"{{ end }}>Blog</a>
+      </li>
+
+      <li class="extraspace capital-on-mobile">
+        {{- if $isCollections }}<span class="directory-arrows" aria-hidden="true">&#10095;</span>{{ end -}}
+        <a href="{{ "collections/" | relURL }}"{{ if $isCollections }} class="current"{{ end }}>Galleries</a>
+        {{- if $featuredCollections }}
+        <ul class="nav-sublist">
+          {{- range $featuredCollections }}
+          <li>
+            <a href="{{ .RelPermalink }}"{{ if eq $.RelPermalink .RelPermalink }} class="current"{{ end }}>{{ .Title }}</a>
+          </li>
+          {{- end }}
+        </ul>
+        {{- end }}
+      </li>
+
+      <li class="extraspace capital-on-mobile">
+        {{- if $isAbout }}<span class="directory-arrows" aria-hidden="true">&#10095;</span>{{ end -}}
+        <a href="{{ "about/" | relURL }}"{{ if $isAbout }} class="current"{{ end }}>About</a>
+      </li>
+
+      <li class="extraspace capital-on-mobile">
+        {{- if $isContact }}<span class="directory-arrows" aria-hidden="true">&#10095;</span>{{ end -}}
+        <a href="{{ "contact/" | relURL }}"{{ if $isContact }} class="current"{{ end }}>Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  {{- if $isCollections }}
+  <div class="keyboard-instructions" id="lights-hint">
+    Press "L" to turn OFF lights
+  </div>
+  {{- end }}
+
+  <div class="copyright">
+    &copy; {{ .Site.Params.author }} {{ .Site.Params.copyrightStartYear }}-{{ now.Year }}
+  </div>
+</header>

@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div id="about-me">
+  <h2>{{ .Title }}</h2>
+  {{ .Content }}
+  {{- with .Resources.GetMatch "about.jpg" }}
+  <div class="photograph about-photo">
+    {{- partial "responsive-img.html" (dict
+      "img" .
+      "alt" "Joe Wang"
+      "sizes" "(max-width: 800px) 92vw, 570px"
+      "widths" (slice 480 800 1200)
+      "fallbackWidth" 800
+    ) -}}
+  </div>
+  {{- end }}
+</div>
+{{ end }}

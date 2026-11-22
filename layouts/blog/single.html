@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="post">
+  <header class="article-title">
+    <h1>{{ .Title }}</h1>
+    <div class="article-meta">
+      <div class="article-date">
+        Posted: {{ .Date.Format "Jan 02, 2006" }}
+      </div>
+    </div>
+  </header>
+
+  <div class="article-body">
+    {{ .Content }}
+  </div>
+
+  <hr class="article-divider">
+
+  {{- $others := where (where .Site.RegularPages "Section" "blog") "RelPermalink" "ne" .RelPermalink -}}
+  <div class="assets-container show-post-assets-container">
+    {{- range $others.ByDate.Reverse }}
+      {{- partial "post-card.html" (dict "page" . "large" false) -}}
+    {{- end }}
+  </div>
+</article>
+{{ end }}

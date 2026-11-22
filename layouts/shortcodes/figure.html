@@ -1,0 +1,21 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" | default "" -}}
+{{- $img := .Page.Resources.GetMatch $src -}}
+
+<figure>
+  {{- if $img -}}
+    {{- partial "responsive-img.html" (dict
+      "img" $img
+      "alt" $alt
+      "sizes" "(max-width: 800px) 100vw, 700px"
+      "widths" (slice 480 720 1080 1400)
+      "fallbackWidth" 720
+    ) -}}
+  {{- else -}}
+    <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy">
+  {{- end -}}
+  {{- if $caption }}
+  <figcaption>{{ $caption }}</figcaption>
+  {{- end }}
+</figure>

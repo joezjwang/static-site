@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body class="{{ if or .IsHome (eq .Section "collections") }}section-collections{{ else if eq .Section "blog" }}section-blog{{ else }}section-page{{ end }}">
+  <span id="page-top"></span>
+  {{- partial "nav.html" . -}}
+  <main id="page-content">
+    {{- block "main" . -}}{{- end -}}
+  </main>
+  <div id="lightbox" aria-hidden="true"></div>
+  {{- $js := resources.Get "js/main.js" | minify | fingerprint -}}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+</body>
+</html>

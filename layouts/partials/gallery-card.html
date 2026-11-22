@@ -1,0 +1,45 @@
+{{- $page := . -}}
+{{- $cover := false -}}
+{{- if $page.Params.cover -}}
+  {{- $cover = $page.Resources.GetMatch $page.Params.cover -}}
+{{- end -}}
+{{- if not $cover -}}
+  {{- with ($page.Resources.ByType "image") -}}
+    {{- $cover = index . 0 -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $photoCount := 0 -}}
+{{- if $page.Params.photos -}}
+  {{- $photoCount = len $page.Params.photos -}}
+{{- else -}}
+  {{- $photoCount = len ($page.Resources.ByType "image") -}}
+{{- end -}}
+
+{{- $dateLabel := $page.Params.display_date -}}
+{{- if and (not $dateLabel) (not $page.Date.IsZero) -}}
+  {{- $dateLabel = $page.Date.Format "01. 2006" -}}
+{{- end -}}
+
+<section class="asset gallery-asset">
+  <a href="{{ $page.RelPermalink }}" class="asset-link">
+    <div class="asset-image gallery-asset-image">
+      {{- if $cover -}}
+        {{- partial "responsive-img.html" (dict
+          "img" $cover
+          "alt" $page.Title
+          "sizes" "(max-width: 479px) 92vw, (max-width: 1023px) 450px, 336px"
+          "widths" (slice 360 540 720)
+          "fallbackWidth" 540
+        ) -}}
+      {{- end -}}
+    </div>
+    <header class="asset-header gallery-asset-header">
+      <div class="asset-meta-row">
+        <span class="asset-meta">{{ $dateLabel }}</span>
+        <span class="asset-meta">{{ $photoCount }} photos</span>
+      </div>
+      <h2 class="asset-title gallery-asset-header-name">{{ $page.Title }}</h2>
+    </header>
+  </a>
+</section>
